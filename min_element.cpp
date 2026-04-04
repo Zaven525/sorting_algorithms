@@ -23,7 +23,7 @@ ForwardIt minElement(ForwardIt first, ForwardIt last, Comp cmp)
     ForwardIt min = first;
     while (first != last)
     {
-        if (cmp(*first, *last)) min = first;
+        if (cmp(*first, *min)) min = first;
         first++;
     }
 
@@ -33,5 +33,5 @@ ForwardIt minElement(ForwardIt first, ForwardIt last, Comp cmp)
 int main()
 {
     std::vector<int> a{1, 2, 3};
-    std::cout << *minElement(a.begin(), a.end(), [](int a, int b){ return std::max(a, b); });    
+    std::cout << *minElement(a.begin(), a.end(), [](int a, int b){ return a < b; });    
 }
