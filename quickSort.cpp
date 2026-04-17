@@ -3,15 +3,17 @@
 
 int particion(std::vector<int>& nums, int l, int r)
 {
+    int pivot = nums[r];
     int i = l - 1;
-    int j = l;
-    for (; j <= r; ++j)
+
+    for (int j = l; j < r; ++j)
     {
-        if (nums[j] <= nums[r])
+        if (nums[j] <= pivot)
         {
             std::swap(nums[++i], nums[j]);
         }
     }
+    std::swap(nums[i + 1], nums[r]);
     return i;
 }
 
@@ -27,7 +29,7 @@ void quickSort(std::vector<int>& nums, int l, int r)
 
 int main()
 {
-    std::vector<int> nums{};
+    std::vector<int> nums{1, 2, 1};
     quickSort(nums, 0, nums.size() - 1);
 
     for (int elem : nums) std::cout << elem << ", ";
